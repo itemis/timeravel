@@ -1,0 +1,17 @@
+<meta name="google-signin-client_id" content={{getCLIENT_ID}}>
+<div id="{{googleLoginButtonId}}"></div>
+
+  <div>
+    
+    <img src="{{user.pictureUrl}}">
+    <br>
+    <b>Connected !</b>
+    <b>TOKEN: </b>
+    <p>{{user.token}}</p>
+    <b>NAME: </b>
+    <p>{{user.name}}</p>
+    <b>EMAIL: </b>
+    <p>{{user.email}}</p>
+
+    <button class="btn btn-danger" (click)="logout()">Logout</button>
+  </div>
