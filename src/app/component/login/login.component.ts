@@ -28,7 +28,7 @@ export class LoginComponent {
   ngOnInit() {
   }
 
-  constructor(private user: User) {
+  constructor(private _ngZone: NgZone,private user: User) {
     this.gapiInstance = gapi;
     /*
     this.getData();
@@ -48,14 +48,16 @@ export class LoginComponent {
       {
         // Triggered after a user successfully logs in using the Google external
         // login provider.
-        "onSuccess": (loggedInUser) => {
+        onSuccess: (loggedInUser) => {
           this.user.token = loggedInUser.getAuthResponse().id_token;
           let profile = loggedInUser.getBasicProfile();
           this.user.pictureUrl = profile.getImageUrl();
           this.user.name = profile.getName();
           this.user.email = profile.getEmail();
+          this._ngZone.run(() => {
+          });
         },
-        "scope": "profile",
+        "scope": 'email',
         "theme": "dark"
       });
   }
@@ -66,29 +68,29 @@ export class LoginComponent {
     let logoutUrl = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=" + homeUrl;
     document.location.href = logoutUrl;
   }
-/*
-  getData() {
-    gapi.load('auth2', () =>{
-      var auth2 = gapi.auth2.init({
-        client_id: LoginComponent.CLIENT_ID
-      }
-      ).then(() =>{
-        auth2 = gapi.auth2.getAuthInstance();
-        if (auth2.isSignedIn.get()) {
-          var profile = auth2.currentUser.get().getBasicProfile();
-          
-          console.log('ID: ' + profile.getId());
-          console.log('Full Name: ' + profile.getName());
-          console.log('Given Name: ' + profile.getGivenName());
-          console.log('Family Name: ' + profile.getFamilyName());
-          console.log('Image URL: ' + profile.getImageUrl());
+  /*
+    getData() {
+      gapi.load('auth2', () =>{
+        var auth2 = gapi.auth2.init({
+          client_id: LoginComponent.CLIENT_ID
         }
-      })
-
-    });
-
-
-  }
-*/
+        ).then(() =>{
+          auth2 = gapi.auth2.getAuthInstance();
+          if (auth2.isSignedIn.get()) {
+            var profile = auth2.currentUser.get().getBasicProfile();
+            
+            console.log('ID: ' + profile.getId());
+            console.log('Full Name: ' + profile.getName());
+            console.log('Given Name: ' + profile.getGivenName());
+            console.log('Family Name: ' + profile.getFamilyName());
+            console.log('Image URL: ' + profile.getImageUrl());
+          }
+        })
+  
+      });
+  
+  
+    }
+  */
 
 }

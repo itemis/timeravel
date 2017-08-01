@@ -1,8 +1,8 @@
 <meta name="google-signin-client_id" content={{getCLIENT_ID}}>
 <div id="{{googleLoginButtonId}}"></div>
+<button class="btn btn-danger" (click)="logout()">Logout</button>
 
-  <div>
-    
+  <div *ngIf="user.token">    
     <img src="{{user.pictureUrl}}">
     <br>
     <b>Connected !</b>
@@ -12,6 +12,4 @@
     <p>{{user.name}}</p>
     <b>EMAIL: </b>
     <p>{{user.email}}</p>
-
-    <button class="btn btn-danger" (click)="logout()">Logout</button>
   </div>
