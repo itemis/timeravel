@@ -8,9 +8,11 @@ export class AuthService {
 
     static readonly CLIENT_ID = "131801329119-1v00skakag3jh7d3eev6va0gbr93lc11.apps.googleusercontent.com";
     gapiInstance: any;
-
-    constructor(private readonly signedInUser: User) {
+    private readonly signedInUser: User
+    
+    constructor() {
         this.gapiInstance = gapi;
+        this.signedInUser = new User();
     }
 
     isUserSignedIn()
