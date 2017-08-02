@@ -17,7 +17,8 @@ export class AuthService {
 
     isUserSignedIn()
     {
-        return this.signedInUser.token;
+        var isSignedIn:boolean = this.signedInUser.token && (this.signedInUser.token!="0");
+        return isSignedIn;
     }
 
     signInUser(user: User)
