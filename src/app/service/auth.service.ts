@@ -29,6 +29,14 @@ export class AuthService {
         this.signedInUser.pictureUrl = user.pictureUrl;
     }
 
+        signOutUser()
+    {
+        this.signedInUser.email = "";
+        this.signedInUser.name = "";
+        this.signedInUser.token = "";
+        this.signedInUser.pictureUrl = "";
+    }
+
     getGApiInstance() {
         return this.gapiInstance;
     }
@@ -50,6 +58,7 @@ export class AuthService {
     }
 
     logout() {
+        this.signOutUser();
         let homeUrl = "http://localhost:4200";
         let logoutUrl = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=" + homeUrl;
         document.location.href = logoutUrl;
