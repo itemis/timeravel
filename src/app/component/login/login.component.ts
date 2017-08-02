@@ -1,20 +1,20 @@
 import { Component, NgZone } from "@angular/core";
+
 import { User } from '../../model/user'
-import {AuthService} from '../../service/auth.service'
+import { AuthService } from '../../service/auth.service'
 
 declare const gapi: any;
 
 @Component({
   selector: "login",
-  templateUrl: "./login.component.html",
-  providers: [User,AuthService]
+  templateUrl: "./login.component.html"
 })
 
 export class LoginComponent {
 
   googleLoginButtonId = "google-login-button";
 
-  constructor(private authService: AuthService, private _ngZone: NgZone, private readonly user: User) {
+  constructor(private authService: AuthService, private _ngZone: NgZone) {
   }
 
   ngOnInit() {
@@ -32,17 +32,25 @@ export class LoginComponent {
         // Triggered after a user successfully logs in using the Google external
         // login provider.
         onSuccess: (loggedInUser) => {
-          this.user.token = loggedInUser.getAuthResponse().id_token;
-          let profile = loggedInUser.getBasicProfile();
-          this.user.pictureUrl = profile.getImageUrl();
-          this.user.name = profile.getName();
-          this.user.email = profile.getEmail();
-          this._ngZone.run(() => {
-          });
+          this.onUserLogin(loggedInUser);
         },
         "scope": 'email',
         "theme": "dark"
       });
+  }
+
+  onUserLogin = (loggedInUser) => {
+    var user: User = new User();
+
+    user.token = loggedInUser.getAuthResponse().id_token;
+    let profile = loggedInUser.getBasicProfile();
+    user.pictureUrl = profile.getImageUrl();
+    user.name = profile.getName();
+    user.email = profile.getEmail();
+
+    this.authService.signInUser(user);
+    this._ngZone.run(() => {
+    });
   }
 
   logout() {
