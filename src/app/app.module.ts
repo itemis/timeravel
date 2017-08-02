@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './routing/app-routing.module';
-import {AuthGuard} from './routing/app-routing.auth-guard'
+import {AuthGuard} from './service/auth-guard.service'
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
