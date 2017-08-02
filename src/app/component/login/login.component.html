@@ -1,14 +1,2 @@
 <!--meta name="google-signin-client_id" content={{getCLIENT_ID}}-->
 <div id="{{googleLoginButtonId}}"></div>
-  <div *ngIf="authService.signedInUser.token">    
-    <img src="{{authService.signedInUser.pictureUrl}}">
-    <br>
-    <b>Connected !<br></b>
-    <b>TOKEN: </b>
-    <p>{{authService.signedInUser.token}}</p>
-    <b>NAME: </b>
-    <p>{{authService.signedInUser.name}}</p>
-    <b>EMAIL: </b>
-    <p>{{authService.signedInUser.email}}</p>
-    <button class="btn btn-danger" (click)="logout()">Logout</button>
-  </div>
