@@ -28,7 +28,7 @@ export class LoginComponent {
   ngOnInit() {
   }
 
-  constructor(private _ngZone: NgZone,private user: User) {
+  constructor(private _ngZone: NgZone, private user: User) {
     this.gapiInstance = gapi;
     /*
     this.getData();
@@ -43,6 +43,16 @@ export class LoginComponent {
   }
 
   drawSignInButton() {
+
+    this.gapiInstance.load('auth2', () => {
+      var auth2 = gapi.auth2.init({
+        client_id: LoginComponent.CLIENT_ID,
+        hosted_domain: "itemis.de"
+      }
+      ).then(() => {
+      })
+
+    });
     this.gapiInstance.signin2.render(
       this.googleLoginButtonId,
       {
