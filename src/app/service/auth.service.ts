@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user'
+import {BehaviorSubject} from 'rxjs/BehaviorSubject'
 
 declare const gapi: any;
 
@@ -8,11 +9,14 @@ export class AuthService {
 
     static readonly CLIENT_ID = "131801329119-1v00skakag3jh7d3eev6va0gbr93lc11.apps.googleusercontent.com";
     gapiInstance: any;
-    private readonly signedInUser: User
+    private readonly signedInUser: User;
+
+    signedInUserSubject: BehaviorSubject<User>;
     
     constructor() {
         this.gapiInstance = gapi;
         this.signedInUser = new User();
+        this.signedInUserSubject= new BehaviorSubject<User>(this.signedInUser) ;
     }
 
     isUserSignedIn()
@@ -21,20 +25,23 @@ export class AuthService {
         return isSignedIn;
     }
 
-    signInUser(user: User)
+    signInUser(user:User)
+    {
+        this.changeUser(user);
+    }
+    changeUser(user: User)
     {
         this.signedInUser.email = user.email;
         this.signedInUser.name = user.name;
         this.signedInUser.token = user.token;
         this.signedInUser.pictureUrl = user.pictureUrl;
+        this.signedInUserSubject.next(user);
     }
 
         signOutUser()
     {
-        this.signedInUser.email = "";
-        this.signedInUser.name = "";
-        this.signedInUser.token = "";
-        this.signedInUser.pictureUrl = "";
+        var user: User = new User();
+        this.changeUser(user);
     }
 
     getGApiInstance() {

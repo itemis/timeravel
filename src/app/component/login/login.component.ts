@@ -2,8 +2,7 @@ import { Component, NgZone } from "@angular/core";
 
 import { User } from '../../model/user'
 import { AuthService } from '../../service/auth.service'
-
-declare const gapi: any;
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "login",
@@ -13,12 +12,14 @@ declare const gapi: any;
 export class LoginComponent {
 
   googleLoginButtonId = "google-login-button";
+  returnUrl: string;
 
-  constructor(private authService: AuthService, private _ngZone: NgZone) {
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService, private _ngZone: NgZone) {
   }
 
   ngOnInit() {
     this.authService.initGoogleApi();
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   ngAfterViewInit() {
@@ -49,12 +50,8 @@ export class LoginComponent {
     user.email = profile.getEmail();
 
     this.authService.signInUser(user);
-    this._ngZone.run(() => {
-    });
+    this.router.navigateByUrl(this.returnUrl);
   }
 
-  logout() {
-    this.authService.logout();
-  }
 
 }
