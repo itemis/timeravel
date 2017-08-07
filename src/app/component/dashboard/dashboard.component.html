@@ -1,12 +1,11 @@
-<div *ngIf="authService?.signedInUser?.token">
-  <img src="{{authService?.signedInUser?.pictureUrl}}">
-  <br>
-  <b>Connected !<br></b>
-  <b>TOKEN: </b>
-  <p>{{authService?.signedInUser?.token}}</p>
-  <b>NAME: </b>
-  <p>{{authService?.signedInUser?.name}}</p>
-  <b>EMAIL: </b>
-  <p>{{authService?.signedInUser?.email}}</p>
-  <button class="btn btn-danger" (click)="logout()">Logout</button>
-</div>
+<p>{{1+2}}</p>
+<img src="{{authService?.signedInUser.pictureUrl}}">
+<br>
+<b>Connected !<br></b>
+<b (click)="debugLog()">TOKEN: </b>
+<p>{{authService?.signedInUser.token}}</p>
+<b>NAME: </b>
+<p>{{authService?.signedInUser.name}}</p>
+<b>EMAIL: </b>
+<p>{{authService?.signedInUser.email}}</p>
+<button class="btn btn-danger" (click)="logout()">Logout</button>

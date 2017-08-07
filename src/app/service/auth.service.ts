@@ -9,8 +9,8 @@ export class AuthService {
 
     static readonly CLIENT_ID = "131801329119-1v00skakag3jh7d3eev6va0gbr93lc11.apps.googleusercontent.com";
     gapiInstance: any;
-    private readonly signedInUser: User;
-
+    signedInUser: User;
+    
     signedInUserSubject: BehaviorSubject<User>;
     
     constructor() {
@@ -29,6 +29,7 @@ export class AuthService {
     {
         this.changeUser(user);
     }
+
     changeUser(user: User)
     {
         this.signedInUser.email = user.email;
@@ -38,7 +39,7 @@ export class AuthService {
         this.signedInUserSubject.next(user);
     }
 
-        signOutUser()
+    signOutUser()
     {
         var user: User = new User();
         this.changeUser(user);
@@ -46,10 +47,6 @@ export class AuthService {
 
     getGApiInstance() {
         return this.gapiInstance;
-    }
-
-    get getCLIENT_ID() {
-        return AuthService.CLIENT_ID;
     }
 
     initGoogleApi() {

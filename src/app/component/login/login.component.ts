@@ -50,7 +50,7 @@ export class LoginComponent {
     user.email = profile.getEmail();
 
     this.authService.signInUser(user);
-    this.router.navigateByUrl(this.returnUrl);
+    this.router.navigate(['dashboard']);
   }
 
 
