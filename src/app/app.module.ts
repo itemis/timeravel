@@ -2,9 +2,6 @@ import { CommonModule } from '@angular/common'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-//import { AppRoutingModule } from './routing/app-routing.module';
-
-import { AuthGuard } from './service/auth-guard.service'
 import { AuthService } from './service/auth.service';
 
 import { AppComponent } from './app.component';
@@ -16,17 +13,13 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
   imports: [
     CommonModule,
     BrowserModule
-    //,
-    //AppRoutingModule
   ],
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent
   ],
-  providers: [AuthService
-  //  , AuthGuard
-  ],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
