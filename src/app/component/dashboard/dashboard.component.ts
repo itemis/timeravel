@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, NgZone, AfterViewInit, AfterViewChecked, ChangeDetectorRef, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, NgZone} from '@angular/core';
 
 import { AuthService } from '../../service/auth.service'
 

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user'
-import {BehaviorSubject} from 'rxjs/BehaviorSubject'
 
 declare const gapi: any;
 
@@ -10,37 +9,31 @@ export class AuthService {
     static readonly CLIENT_ID = "131801329119-1v00skakag3jh7d3eev6va0gbr93lc11.apps.googleusercontent.com";
     gapiInstance: any;
     signedInUser: User;
-    
-    signedInUserSubject: BehaviorSubject<User>;
-    
+    private static readonly homeUrl = "http://localhost:4200";
+    private static readonly logoutUrl = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=" + AuthService.homeUrl;
+
     constructor() {
         this.gapiInstance = gapi;
         this.signedInUser = new User();
-        this.signedInUserSubject= new BehaviorSubject<User>(this.signedInUser) ;
     }
 
-    isUserSignedIn()
-    {
-        var isSignedIn:boolean = this.signedInUser.token && (this.signedInUser.token!="0");
+    isUserSignedIn() {
+        var isSignedIn: boolean = this.signedInUser.token && (this.signedInUser.token != "0");
         return isSignedIn;
     }
 
-    signInUser(user:User)
-    {
+    signInUser(user: User) {
         this.changeUser(user);
     }
 
-    changeUser(user: User)
-    {
+    changeUser(user: User) {
         this.signedInUser.email = user.email;
         this.signedInUser.name = user.name;
         this.signedInUser.token = user.token;
         this.signedInUser.pictureUrl = user.pictureUrl;
-        this.signedInUserSubject.next(user);
     }
 
-    signOutUser()
-    {
+    signOutUser() {
         var user: User = new User();
         this.changeUser(user);
     }
@@ -63,24 +56,36 @@ export class AuthService {
 
     logout() {
         this.signOutUser();
-        let homeUrl = "http://localhost:4200";
-        let logoutUrl = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=" + homeUrl;
-        document.location.href = logoutUrl;
-    } 
+        document.location.href = AuthService.logoutUrl;
+    }
+    
+    /**
+     * draws the google login button on the component passed as parameter
+     * @param component the component on which the google login button shall be drawn
+     */
+    drawSignInButton(component) {
+        this.getGApiInstance().signin2.render(
+            //the id of the div element where the google login button shall be drawn
+            component.googleLoginButtonId,
+            {
+                onSuccess: (loggedInUser) => {
+                    component._ngZone.run(
+                        () => { this.onUserLogin(loggedInUser); }
+                    );
+                },
+                "scope": 'email',
+                "theme": "dark"
+            });
+    }
 
-    drawSignInButton(component, componentCallback)
-    {
-    this.getGApiInstance().signin2.render(
-      component.googleLoginButtonId,
-      {
-        onSuccess: (loggedInUser) => {
-          component._ngZone.run(
-            () => { componentCallback(loggedInUser);}
-          );
-        },
-        "scope": 'email',
-        "theme": "dark"
-      });
+    onUserLogin = (loggedInUser) => {
+        var user: User = new User();
+        user.token = loggedInUser.getAuthResponse().id_token;
+        let profile = loggedInUser.getBasicProfile();
+        user.pictureUrl = profile.getImageUrl();
+        user.name = profile.getName();
+        user.email = profile.getEmail();
+        this.signInUser(user);
     }
 
 }
