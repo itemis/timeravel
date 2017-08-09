@@ -22,31 +22,31 @@ export class AuthService {
         return isSignedIn;
     }
 
-    signInUser(user: User) {
+    signInUser(user: User): void {
         this.changeUser(user);
     }
 
-    changeUser(user: User) {
+    changeUser(user: User): void {
         this.signedInUser.email = user.email;
         this.signedInUser.name = user.name;
         this.signedInUser.token = user.token;
         this.signedInUser.pictureUrl = user.pictureUrl;
     }
 
-    signOutUser() {
+    signOutUser(): void  {
         var user: User = new User();
         this.changeUser(user);
     }
 
-    getGApiInstance() {
+    getGApiInstance(): any {
         return this.gapiInstance;
     }
 
-    initGoogleApi() {
+    initGoogleApi(): void {
         this.gapiInstance.load('auth2', this.authenticateApp);
     }
 
-    authenticateApp = () => {
+    authenticateApp = (): void => {
         var auth2 = gapi.auth2.init({
             client_id: AuthService.CLIENT_ID,
             hosted_domain: "itemis.de"
@@ -54,7 +54,7 @@ export class AuthService {
         )
     }
 
-    logout() {
+    logout(): void {
         this.signOutUser();
         document.location.href = AuthService.logoutUrl;
     }
@@ -63,7 +63,7 @@ export class AuthService {
      * draws the google login button on the component passed as parameter
      * @param component the component on which the google login button shall be drawn
      */
-    drawSignInButton(component) {
+    drawSignInButton(component) : void{
         this.getGApiInstance().signin2.render(
             //the id of the div element where the google login button shall be drawn
             component.googleLoginButtonId,
@@ -78,7 +78,7 @@ export class AuthService {
             });
     }
 
-    onUserLogin = (loggedInUser) => {
+    onUserLogin = (loggedInUser): void => {
         var user: User = new User();
         user.token = loggedInUser.getAuthResponse().id_token;
         let profile = loggedInUser.getBasicProfile();

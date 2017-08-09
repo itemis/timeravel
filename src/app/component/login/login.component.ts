@@ -29,7 +29,4 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.authService.drawSignInButton(this);
   }
 
-
-
-
 }

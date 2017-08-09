@@ -6,7 +6,7 @@ import { AuthService } from '../auth.service'
 
 @Injectable()
 
-export class FakeAuthService implements AuthService {
+export class AuthServiceStub implements AuthService {
 
     gapiInstance: any;
     signedInUser: User;
@@ -41,7 +41,7 @@ export class FakeAuthService implements AuthService {
     }
 
     initGoogleApi() {
-        this.gapiInstance.load('auth2', this.authenticateApp);
+        
     }
 
     authenticateApp = () => {
@@ -56,8 +56,6 @@ export class FakeAuthService implements AuthService {
      * @param component the component on which the google login button shall be drawn
      */
     drawSignInButton(component) {
-        component._ngZone.run(
-            () => { successfulSignInCallback(loggedInUser));
     }
 
     onUserLogin = (loggedInUser) => {
