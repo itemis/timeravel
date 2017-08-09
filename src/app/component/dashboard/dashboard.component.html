@@ -1,10 +1,10 @@
 <br>
-<img src="{{authService?.signedInUser.pictureUrl}}">
+<img class="profilePic" src="{{authService?.signedInUser.pictureUrl}}">
 <br>
-<b>TOKEN: </b>
-<p>{{authService?.signedInUser.token}}</p>
-<b>NAME: </b>
-<p>{{authService?.signedInUser.name}}</p>
-<b>EMAIL: </b>
-<p>{{authService?.signedInUser.email}}</p>
-<button class="btn btn-danger" (click)="logout()">Logout</button>
+<b class="token">TOKEN: </b>
+<p class="tokenVal">{{authService?.signedInUser.token}}</p>
+<b class="name">NAME: </b>
+<p class="nameVal">{{authService?.signedInUser.name}}</p>
+<b class="email">EMAIL: </b>
+<p class="emailVal">{{authService?.signedInUser.email}}</p>
+<button class="logoutButton" (click)="logout()">Logout</button>

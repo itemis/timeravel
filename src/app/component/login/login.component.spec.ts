@@ -36,5 +36,9 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have a div with the element googlebutton id', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('div').id).toEqual(component.googleLoginButtonId);
+  });
 
 });

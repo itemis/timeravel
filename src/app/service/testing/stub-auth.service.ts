@@ -12,7 +12,13 @@ export class AuthServiceStub implements AuthService {
     signedInUser: User;
 
     constructor() {
+        var user: User = new User();
         this.signedInUser = new User();
+        user.token = "dummyToken";
+        user.pictureUrl = "https://dummyimage.com/600x400/000/fff&text=love";
+        user.name = "awesome";
+        user.email = "awesome@awesomness.com";
+        this.signInUser(user);
     }
 
     isUserSignedIn() {
@@ -41,7 +47,7 @@ export class AuthServiceStub implements AuthService {
     }
 
     initGoogleApi() {
-        
+
     }
 
     authenticateApp = () => {
