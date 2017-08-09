@@ -8,7 +8,6 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: "login",
   templateUrl: "./login.component.html"
 })
-
 export class LoginComponent implements OnInit, AfterViewInit {
 
   googleLoginButtonId = "google-login-button";
@@ -28,17 +27,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   drawSignInButton() {
-    this.authService.getGApiInstance().signin2.render(
-      this.googleLoginButtonId,
-      {
-        onSuccess: (loggedInUser) => {
-          this._ngZone.run(
-            () => { this.onUserLogin(loggedInUser);}
-          );
-        },
-        "scope": 'email',
-        "theme": "dark"
-      });
+    this.authService.drawSignInButton(this,this.onUserLogin);
   }
 
   onUserLogin = (loggedInUser) => {

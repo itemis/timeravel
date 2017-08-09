@@ -66,5 +66,21 @@ export class AuthService {
         let homeUrl = "http://localhost:4200";
         let logoutUrl = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=" + homeUrl;
         document.location.href = logoutUrl;
+    } 
+
+    drawSignInButton(component, componentCallback)
+    {
+    this.getGApiInstance().signin2.render(
+      component.googleLoginButtonId,
+      {
+        onSuccess: (loggedInUser) => {
+          component._ngZone.run(
+            () => { componentCallback(loggedInUser);}
+          );
+        },
+        "scope": 'email',
+        "theme": "dark"
+      });
     }
+
 }
