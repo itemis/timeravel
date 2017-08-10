@@ -19,9 +19,8 @@ describe('timeravel App', () => {
   });
 
   it('should signin when user logs in', () => {
-    
-    page.navigateTo();
 
+    page.navigateTo();
     var signInString = "Sign in";
 
     var loginButton = browser.driver.findElement(by.css(".abcRioButtonContentWrapper"));
@@ -46,9 +45,11 @@ describe('timeravel App', () => {
       next = browser.driver.findElement(by.id('passwordNext'));
       next.click();
 
-      browser.driver.switchTo().window(handles[0]);    
+      browser.driver.switchTo().window(handles[0]);
       browser.driver.sleep(2000);
-      
+
+      var emailValElement = browser.driver.findElement(by.css(".emailVal"));
+      expect<any>(emailValElement.getText()).toEqual("okacimi@itemis.de");
     });
 
 
