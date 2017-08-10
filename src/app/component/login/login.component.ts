@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.authService.initGoogleApi();
     console.debug("login ngOnInit called");
   }
 

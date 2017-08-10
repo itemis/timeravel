@@ -72,7 +72,7 @@ describe('DashboardComponent', () => {
     expect(el.textContent).toEqual("awesome@awesomness.com");
   });
 
-  it('should have a profile pic  and a profile pic element', () => {
+  it('should have a profile pic and a profile pic element', () => {
     let de: DebugElement = fixture.debugElement.query(By.css('.profilePic'));
     let el: HTMLElement = de.nativeElement;
     expect(el).not.toBeNull;

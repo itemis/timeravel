@@ -13,6 +13,10 @@ module.exports = function (config) {
       require('karma-mocha-reporter'),
       require('@angular/cli/plugins/karma')
     ],
+    files:
+    [
+      'https://apis.google.com/js/api.js',
+    ],
     client:{
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },

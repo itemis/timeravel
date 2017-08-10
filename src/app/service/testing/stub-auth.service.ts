@@ -4,11 +4,13 @@ import { User } from '../../model/user'
 
 import { AuthService } from '../auth.service'
 
+import {GapiServiceStub} from '../testing/stub-gapi.service'
+
 @Injectable()
 
 export class AuthServiceStub implements AuthService {
 
-    gapiInstance: any;
+    gapiServiceInstance: GapiServiceStub;
     signedInUser: User;
 
     constructor() {
@@ -42,19 +44,9 @@ export class AuthServiceStub implements AuthService {
         this.changeUser(user);
     }
 
-    getGApiInstance() {
-        return this.gapiInstance;
-    }
-
-    initGoogleApi() {
-
-    }
-
-    authenticateApp = () => {
-    }
-
     logout() {
         this.signOutUser();
+        this.gapiServiceInstance.logout();
     }
 
     /**
@@ -62,16 +54,7 @@ export class AuthServiceStub implements AuthService {
      * @param component the component on which the google login button shall be drawn
      */
     drawSignInButton(component) {
-    }
-
-    onUserLogin = (loggedInUser) => {
-        var user: User = new User();
-        user.token = loggedInUser.getAuthResponse().id_token;
-        let profile = loggedInUser.getBasicProfile();
-        user.pictureUrl = profile.getImageUrl();
-        user.name = profile.getName();
-        user.email = profile.getEmail();
-        this.signInUser(user);
+        this.gapiServiceInstance.drawSignInButton(component,this.signedInUser);
     }
 
 }
