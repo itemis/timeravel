@@ -14,6 +14,7 @@ export class AuthServiceStub implements AuthService {
     signedInUser: User;
 
     constructor() {
+        this.gapiServiceInstance = new GapiServiceStub();
         var user: User = new User();
         this.signedInUser = new User();
         user.token = "dummyToken";
