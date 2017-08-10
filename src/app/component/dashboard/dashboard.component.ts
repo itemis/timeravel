@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone} from '@angular/core';
 
-import { AuthService } from '../../service/auth.service'
+import { AuthService } from '../../service/authentication/auth.service'
 
 import { User } from '../../model/user';
 

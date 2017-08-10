@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { User } from '../model/user'
+import { User } from '../../model/user'
 
 declare const gapi: any;
 

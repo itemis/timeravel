@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import {GapiService} from '../gapi.service';
 
-import {User} from '../../model/user';
+import {User} from '../../../model/user';
 
 export class GapiServiceStub implements GapiService{
 

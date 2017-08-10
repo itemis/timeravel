@@ -1,7 +1,7 @@
 import { Component, NgZone, OnInit, AfterViewInit } from "@angular/core";
 
 import { User } from '../../model/user'
-import { AuthService } from '../../service/auth.service'
+import { AuthService } from '../../service/authentication/auth.service'
 
 @Component({
   selector: "login",

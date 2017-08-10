@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import {LoginComponent} from './component/login/login.component'
 import {DashboardComponent} from './component/dashboard/dashboard.component'
 
-import {AuthService} from './service/auth.service';
-import {AuthServiceStub} from './service/testing/stub-auth.service';
+import {AuthService} from './service/authentication/auth.service';
+import {AuthServiceStub} from './service/authentication/test/stub-auth.service';
 
 import {} from 'jasmine';
 

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { User } from '../../model/user'
+import { User } from '../../../model/user'
 
 import { AuthService } from '../auth.service'
 
-import {GapiServiceStub} from '../testing/stub-gapi.service'
+import {GapiServiceStub} from '../../googleapi/test/stub-gapi.service'
 
 @Injectable()
 

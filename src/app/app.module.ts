@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AuthService } from './service/auth.service';
+import { AuthService } from './service/authentication/auth.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
