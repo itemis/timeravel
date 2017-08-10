@@ -47,13 +47,13 @@ export class GapiService {
             //the id of the div element where the google login button shall be drawn
             component.googleLoginButtonId,
             {
-                onSuccess: (loggedInUser) => {
+                'onSuccess': (loggedInUser) => {
                     component._ngZone.run(
                         () => { this.onUserLogin(loggedInUser, user); }
                     );
                 },
-                "scope": 'email',
-                "theme": "dark"
+                'scope': 'email',
+                'theme': "dark"
             });
     }
 
