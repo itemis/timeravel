@@ -1,5 +1,8 @@
 import { TimeravelPage } from './app.po';
 import { protractor, browser, by, element } from 'protractor';
+
+const dummyUserCredentials: any = require('../src/assets/test/e2e/testGoogleCredentials.json');
+
 describe('timeravel App', () => {
   let page: TimeravelPage;
 
@@ -31,14 +34,14 @@ describe('timeravel App', () => {
 
     var email = browser.driver.findElement(by.id('identifierId'));
 
-    email.sendKeys("okacimi" || process.env.GOOGLE_USER);
+    email.sendKeys( dummyUserCredentials.username || process.env.GOOGLE_USER);
 
     var next = browser.driver.findElement(by.id('identifierNext'));
     next.click();
 
     browser.driver.sleep(2000);
     var passwd = browser.driver.findElement(by.name('password'));
-    passwd.sendKeys("F@tim@08" || process.env.GOOGLE_PASSWORD);
+    passwd.sendKeys( dummyUserCredentials.password || process.env.GOOGLE_PASSWORD);
 
     next = browser.driver.findElement(by.id('passwordNext'));
     next.click();
