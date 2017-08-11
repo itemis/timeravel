@@ -1,10 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
- 
   <h1>
-    <img src="assets/images/timeravel.png" width="100" height="40" alt="Computer Hope" style="vertical-align:middle"/> 
+    <img src="assets/images/timeravel.png" width="100" height="40" alt="Computer Hope" style="vertical-align:middle" />
     <font face="Georgia">Time and travel expenses reporting app</font>
   </h1>
+  <div *ngIf="!authService?.isUserSignedIn();else dashboard">
+    <login> </login>
+  </div>
+  <ng-template #dashboard>
+    <app-dashboard> </app-dashboard>
+  </ng-template>
 </div>
-<router-outlet></router-outlet>
-

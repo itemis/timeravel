@@ -1,26 +1,24 @@
-import { Component, OnInit, NgZone } from "@angular/core";
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, NgZone, OnInit, AfterViewInit } from "@angular/core";
 
 import { User } from '../../model/user'
-import { AuthService } from '../../service/auth.service'
+import { AuthService } from '../../service/authentication/auth.service'
 
 @Component({
   selector: "login",
   templateUrl: "./login.component.html"
 })
-
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit, AfterViewInit {
 
   googleLoginButtonId = "google-login-button";
   returnUrl: string;
 
-  constructor(private route: ActivatedRoute,
-        private router: Router,private authService: AuthService, private _ngZone: NgZone) {
+  constructor(
+    private authService: AuthService, private _ngZone: NgZone) {
+    console.debug("login constructor called");
   }
 
   ngOnInit() {
-    this.authService.initGoogleApi();
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    console.debug("login ngOnInit called");
   }
 
   ngAfterViewInit() {
@@ -28,34 +26,7 @@ export class LoginComponent implements OnInit{
   }
 
   drawSignInButton() {
-    this.authService.getGApiInstance().signin2.render(
-      this.googleLoginButtonId,
-      {
-        // Triggered after a user successfully logs in using the Google external
-        // login provider.
-        onSuccess: (loggedInUser) => {
-          this.onUserLogin(loggedInUser);
-        },
-        "scope": 'email',
-        "theme": "dark"
-      });
-  }
-
-  onUserLogin = (loggedInUser) => {
-    var user: User = new User();
-
-    user.token = loggedInUser.getAuthResponse().id_token;
-    let profile = loggedInUser.getBasicProfile();
-    user.pictureUrl = profile.getImageUrl();
-    user.name = profile.getName();
-    user.email = profile.getEmail();
-
-    this.authService.signInUser(user);
-    this.router.navigateByUrl(this.returnUrl);
-  }
-
-  logout() {
-    this.authService.logout();
+    this.authService.drawSignInButton(this);
   }
 
 }
