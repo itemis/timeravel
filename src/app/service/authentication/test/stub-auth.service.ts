@@ -6,6 +6,9 @@ import { AuthService } from '../auth.service'
 
 import {GapiServiceStub} from '../../googleapi/test/stub-gapi.service'
 
+const dummyTestUser: any = require('../../../../assets/test/unit/dummyTestUser.json');
+
+
 @Injectable()
 
 export class AuthServiceStub implements AuthService {
@@ -17,10 +20,10 @@ export class AuthServiceStub implements AuthService {
         this.gapiServiceInstance = new GapiServiceStub();
         var user: User = new User();
         this.signedInUser = new User();
-        user.token = "dummyToken";
-        user.pictureUrl = "https://dummyimage.com/600x400/000/fff&text=love";
-        user.name = "awesome";
-        user.email = "awesome@awesomness.com";
+        user.token = dummyTestUser.token;
+        user.pictureUrl = dummyTestUser.pictureUrl;
+        user.name = dummyTestUser.name;
+        user.email = dummyTestUser.email;
         this.signInUser(user);
     }
 

@@ -9,6 +9,8 @@ import { AuthServiceStub } from '../../service/authentication/test/stub-auth.ser
 
 import { By } from '@angular/platform-browser';
 
+const dummyTestUser: any = require('../../../assets/test/unit/dummyTestUser.json');
+
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
@@ -47,7 +49,7 @@ describe('DashboardComponent', () => {
   it('should have a token', () => {
     let de: DebugElement = fixture.debugElement.query(By.css('.tokenVal'));
     let el: HTMLElement = de.nativeElement;
-    expect(el.textContent).toEqual("dummyToken");
+    expect(el.textContent).toEqual(dummyTestUser.token);
   });
 
   it('should have a p element with the text name', () => {
@@ -59,7 +61,7 @@ describe('DashboardComponent', () => {
   it('should have a name', () => {
     let de: DebugElement = fixture.debugElement.query(By.css('.nameVal'));
     let el: HTMLElement = de.nativeElement;
-    expect(el.textContent).toEqual("awesome");
+    expect(el.textContent).toEqual(dummyTestUser.name);
   });
 
   it('should have a p element with the text email', () => {
@@ -71,14 +73,14 @@ describe('DashboardComponent', () => {
   it('should have an email', () => {
     let de: DebugElement = fixture.debugElement.query(By.css('.emailVal'));
     let el: HTMLElement = de.nativeElement;
-    expect(el.textContent).toEqual("awesome@awesomness.com");
+    expect(el.textContent).toEqual(dummyTestUser.email);
   });
 
   it('should have a profile pic and a profile pic element', () => {
     let de: DebugElement = fixture.debugElement.query(By.css('.profilePic'));
     let el: HTMLElement = de.nativeElement;
     expect(el).not.toBeNull;
-    expect(el.attributes.getNamedItem("src").value).toEqual("https://dummyimage.com/600x400/000/fff&text=love");
+    expect(el.attributes.getNamedItem("src").value).toEqual(dummyTestUser.pictureUrl);
   });
 
   it('should have a logout button', () => {
