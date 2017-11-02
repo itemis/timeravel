@@ -72,7 +72,7 @@ describe('timeravel App', () => {
     browser.getAllWindowHandles().then(function (handles) {
       signInGoogleUser(handles);
       var emailValElement = browser.driver.findElement(by.css(".emailVal"));
-      expect<any>(emailValElement.getText()).toEqual("okacimi@itemis.de");
+      expect<any>(emailValElement.getText()).toEqual(dummyUserCredentials.username+"@itemis.de");
     });
   });
 
