@@ -4,9 +4,15 @@ node_js:
    - node # will use latest node
 
 before_script: # commands to run before the build step
-   - npm install -g --silent @angular/cli
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - npm install -g --silent @angular/cli
+
+install:
+   - npm install
 
 script: # the build step
+   - npm run ci
    - ng build --prod
 
 notifications:
