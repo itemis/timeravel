@@ -6,6 +6,7 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
+
 language: node_js
 
 node_js:
@@ -24,6 +25,6 @@ script: # the build step
    - ng build --prod
 
 notifications:
-  email: # only receive email when the build status changes (someone broke the build!) 
+    slack: itemis:Y2duxVdGm3OnuxmzmpbaUUpW
     on_failure: change
     on_success: change 
