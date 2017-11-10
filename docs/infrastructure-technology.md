@@ -1,9 +1,9 @@
 # Revision Control
-Obviously, the project is hosted on github :-) . Accordingly, we are using GIT as a revision control system.
+Obviously, the project is hosted on Github :-) . Accordingly, we are using GIT as a revision control system.
 
 # Ticekting and Issue Tracking System
 Our choice of a tracking system was driven by two factors:
-- The first one being an easy integration with Github so that we can e.g. refer commits from github.
+- The first one being an easy integration with Github so that we can e.g. refer commits from Github.
 - Free usage for Open source projects
 
 Accordingly, we chose [Zenhub](https://app.zenhub.com/ "Zenhub Homepage") as it fulfills both these criterias and seems from first hand experience quite flexible.
