@@ -5,7 +5,7 @@ This file documents the overall process, procedures, rules, and conventions to b
 
 ## General Process Framework
 
-TBW:
+TBD:
 
 * SCRUM-"inspired"
 * dates / development cycles
@@ -15,7 +15,7 @@ TBW:
 
 ## Task Management
 
-TBW:
+TBD:
 
 * template for writing issues
 * defining acceptance criteria / definition of done
@@ -23,16 +23,16 @@ TBW:
 
 ## Development Workflow
 
-TBW
+TBD
 
 * Git Flow
-* Pair programming
-* Test-Driven Development
+* pair programming
+* test-driven development
 
 
 ## Coding Conventions
 
-TBW
+TBD
 
-* Test classes
+* test classes
 * code style conventions
