@@ -25,3 +25,7 @@ https://paydirtapp.com/
 - Dashboard and reporting
     - A dashboard view on the time entries shall be provided enabling the user to see an overview of the time tracked by project, week and days. Additionally, graphical representations of the percentages of time spent shall also be provided to give an overview of the activities consuming the most time.
     - A reporting view shall be provided offering the possibility to show reports that are filtered by project, tasks, client, teams or members or a combination of all these elements together. The possiblity to export these reports to the existing blueant shall also be made possible.
+
+# Tools comparison
+- Between Toggl's aproaach and timely calndar-centered approach, i prefer personnally Toggl's as it is easy to get started with it and feels more intuitive.
+- 
