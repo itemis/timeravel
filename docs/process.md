@@ -38,7 +38,7 @@ TBD
 		- Popular coding conventions in Java [popular Java conding conventions](http://sideeffect.kr/popularconvention/ "Popular Java coding conventions")
 		- [Google Java coding conventions](https://google.github.io/styleguide/javaguide.html/ "Google Java coding conventions")
 
-		- TypeScript
+- TypeScript
     - 2 spaces instead of tabs
     - [Microsoft TypeScript Coding guidelines](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines "Microsoft  TypeScript Coding guidelines")
     - Code Static Analysis
