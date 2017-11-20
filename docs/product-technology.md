@@ -1,16 +1,17 @@
 # handling of refresh tokens by google javascript api
-	- how to refresh a token with google api ?
-		- https://developers.google.com/api-client-library/javascript/help/faq, https://developers.google.com/api-client-library/javascript/help/faq
-			- explict method call
-		- https://stackoverflow.com/questions/24454137/how-to-get-refresh-token-while-using-google-api-js-client
-			- for the oauth workflow initiated for use with client applications no refresh token is issued. Google does not support this in this case
-		- Refresh tokens are not typically used in client-side (JavaScript) web applications. (https://developers.google.com/identity/protocols/OAuth2WebServer#offline)
+- how to refresh a token with google api ?
+	- https://developers.google.com/api-client-library/javascript/help/faq, https://developers.google.com/api-client-library/javascript/help/faq
+		- explict method call
+	- https://stackoverflow.com/questions/24454137/how-to-get-refresh-token-while-using-google-api-js-client
+		- for the oauth workflow initiated for use with client applications no refresh token is issued. Google does not support this in this case
+	- Refresh tokens are not typically used in client-side (JavaScript) web applications. (https://developers.google.com/identity/protocols/OAuth2WebServer#offline)
+
 # storage of refresh tokens javascript/angular
-	- main idea: store as secure cookie by using synchronized token patterns
-	- https://stormpath.com/blog/where-to-store-your-jwts-cookies-vs-html5-web-storage
-	- http://www.baeldung.com/spring-security-oauth2-refresh-token-angular-js
+- main idea: store as secure cookie by using synchronized token patterns
+- https://stormpath.com/blog/where-to-store-your-jwts-cookies-vs-html5-web-storage
+- http://www.baeldung.com/spring-security-oauth2-refresh-token-angular-js
 # openconnect id vs google oauth libraries for access to google functionality
-	- instead of explicit api to ca
+- instead of explicit api to ca
 	
 # useful links
 
@@ -60,3 +61,36 @@ https://oauth.net/articles/authentication/
 from what i get until now it seems like for google oauth and openid connect are the same as Google's OAuth 2.0 APIs can be used for both authentication and authorization
 
 
+# Questions
+
+- is there a rest API to use by google that would allow us to generically issue requests ?
+- do we expect the authentication mechanism (google) we are using currently to change ?
+- what do we want to do ?
+	- access the account of a user and his data
+	- authenticate the user
+	- ask for authorization for portions of the user account only incrementally
+- how ?
+	- we need to define our APIS and our expectations
+		- authentication module (may be simply according to oauth or keep it generic ?)
+			- app authentication service/API
+			- authentication service/API
+		- data metamodel
+			- unclear at this stage what our needs are. Probably for now:
+			- Calendar
+			- Cloud file storage
+			- For both the calendar and the cloudl file storage we still don't know exactly which part of the functionality is needed. 
+			- Model For time tracking
+				- Task
+				- Time Entry
+					- Start
+					- End
+				- Task <-> Time Entry
+				- etc.
+	- Concrete implementation
+		- Currently, we are highly dependant on google accounts/login. Accordingly we need an implementation that enables:
+			- Access to google calendar
+			- Google Login
+		- The two requirements above imply the ability to access the google calendar API and the login API from the frontend implementation.
+			- Questions implied
+				- can we use different libraries for the login to google and other ones for accessing the calendar ?
+				- what kind of access is possible to google services from a web frontend. 
