@@ -38,14 +38,14 @@ TBD
 
 ## Testing process
 
-- In timeravel we commit ourselves to maintaining the following types of tests in order to hold ourselves to the highest standards of software quality:
+- In timeravel we commit ourselves to maintaining the following types of test in order to hold ourselves up to the highest standards of software quality:
     - [Unit Tests](https://martinfowler.com/bliki/UnitTest.html)
-        - As we are commiting ourselves to a TDD-based devlopment process, Unit tests shall be written in a timely manner before the production code. Additionally, they shall be run on every branch and every time a merge request is merged.
+        - As we are commiting ourselves to a TDD-based devlopment process, Unit tests shall be written in a timely manner before the production code. Additionally, they shall be run on every brunch and every time a merge request is merged.
     - Integration Tests
-        - Shall be run on every branch and every time a merge request is merged.
+        - Shall be run on every brunch and every time a merge request is merged.
     - E2E tests (End-to-End tests)
         - Shall be run every time a merge request is merged.
     - Explorative tests
         - Shall be run periodically. 
     - Security
-        - Shall be run periodically.
+        - Shall be run periodically.   
