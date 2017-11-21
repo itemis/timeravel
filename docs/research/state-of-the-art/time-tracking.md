@@ -1,3 +1,6 @@
+# Introduction
+This document serves as a basis for collecting existing time tracking apps and their most prominent features. It additionally cites the sources of this collection and some features that were inspired by these apps.
+
 # Sources
 - [Zapier Article](https://zapier.com/blog/best-time-tracking-apps/ "Zapier article on time tracking apps")
 - [Forbes Article](https://www.forbes.com/sites/tomaslaurinavicius/2016/12/20/time-tracking-tools/#47dfd52b1f4b
