@@ -1,7 +1,7 @@
 # Revision Control
 Obviously, the project is hosted on Github :-) . Accordingly, we are using GIT as a revision control system.
 
-# Ticekting and Issue Tracking System
+# Ticketing and Issue Tracking System
 Our choice of a tracking system was driven by two factors:
 - The first one being an easy integration with Github so that we can e.g. refer commits from Github.
 - Free usage for Open source projects
